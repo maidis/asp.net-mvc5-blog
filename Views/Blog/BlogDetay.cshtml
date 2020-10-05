@@ -36,12 +36,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="container">
             <div class="col-md-8 single-main">
                 <div class="single-grid">
+                    @*
+                      Okuma süresini almak için yazıdaki toplam kelime sayısını 150-250 arası bir değere bölmek
+                      yeterlidir. Kısa yazılarda 0 dk görünmesi istenmiyorsa saniye de hesaba katılmalıdır veya
+                      sonuç kontrol edilip eğer 0 saniyeyse 1 saniye yapılmalıdır.
+                      https://stackoverflow.com/questions/49692008/estimation-time-to-read-an-article-in-asp-mvc  
+                    *@
                     @foreach (var x in Model.Deger1)
                     {
                     <img src="@x.BlogImage" alt="" style="margin-bottom:20px"/>
                     <h2>@x.Baslik</h2>
+                    <h6 style="color:crimson">Okuma Süresi: @(x.Aciklama.Split(' ').Length / 150) dakika | Okunma Sayısı: @x.Goruntulenme | Yazar: YazarAdi</h6>
                     <p>
-                        @x.Aciklama
+                        @* https://stackoverflow.com/questions/9556008/html-raw-is-not-working-asp-net-mvc *@
+                        @Html.Raw(HttpUtility.HtmlDecode(@x.Aciklama))
                     </p>
                     }
                 </div>

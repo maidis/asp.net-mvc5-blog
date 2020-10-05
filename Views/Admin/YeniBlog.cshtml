@@ -5,6 +5,29 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<head>
+    <script src="https://cdn.tiny.cloud/1/secret-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        format: 'raw',
+        plugins: [
+      'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+      'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+      'table emoticons template paste help'
+    ],
+        toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
+      'bullist numlist outdent indent | link image | print preview media fullpage | ' +
+      'forecolor backcolor emoticons | help',
+        toolbar_mode: 'floating',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+    });
+</script>
+
+
 <h2>Yeni Blog Yazısı Ekleme</h2>
 <br />
 <form class="form-group" method="post">
@@ -18,7 +41,8 @@
     @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control" })
     <br />
     @Html.LabelFor(x => x.Aciklama)
-    @Html.TextAreaFor(x => x.Aciklama, new { @class = "form-control" })
+    @Html.TextAreaFor(x => x.Aciklama, new { @class = "form-control textarea" })
     <br />
     <button class="btn btn-primary">Yazı Ekle</button>
 </form>
+

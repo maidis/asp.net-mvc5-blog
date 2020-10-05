@@ -48,7 +48,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <img src="@x.BlogImage" alt="" style="margin-bottom:20px"/>
                         <a href="/Blog/BlogDetay/@x.ID">@x.Baslik</a>
                         <p>
-                            @x.Aciklama
+                            @Html.Raw(HttpUtility.HtmlDecode(@x.Aciklama))
                         </p>
                     </div>
                     <br /><br />

@@ -26,6 +26,21 @@ namespace TravelTripProje.Controllers
             //var blogbul = c.Blogs.Where(x => x.ID == id).ToList();
             by.Deger1 = c.Blogs.Where(x => x.ID == id).ToList();
             by.Deger2 = c.Yorumlars.Where(x => x.Blogid == id).ToList();
+
+            /*
+             Blog yazılarının görüntülenme sayısını göstermek için basit bir yöntem. Daha sonra
+             session tabanlı bir çözüme geçmek daha iyi olacaktır.
+
+             https://stackoverflow.com/questions/40047670/count-pageviews-in-mvc-and-log-in-database
+             */
+            if (by.Deger1 != null)
+            {
+                var view = by.Deger1.FirstOrDefault();
+                view.Goruntulenme++;
+                c.SaveChanges();
+            }
+
+
             return View(by);
         }
 

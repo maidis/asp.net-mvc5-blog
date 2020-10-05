@@ -10,7 +10,8 @@ namespace TravelTripProje.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            //return View();
+            return RedirectToAction("Index", "Default");
         }
 
         public ActionResult About()
